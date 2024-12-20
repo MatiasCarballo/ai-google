@@ -19,8 +19,6 @@ export class BotService {
   }
 
   async invokeFlow(input:string, history?:BaseMessage[]){
-    console.log(input);
-    
     const llm = await this.model();
     const promptAgent = promptPrueba1;
     const prompt = ChatPromptTemplate.fromMessages([
@@ -31,7 +29,12 @@ export class BotService {
     const response = await chain.invoke({
       input
     });
+
+    //ejemplo de agente
+    await this.invokeGraph()
     
     return response.content;
   }
+
+
 }
